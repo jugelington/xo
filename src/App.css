@@ -1,32 +1,72 @@
-.App {
+main {
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr;
+}
+
+table {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(187, 121, 121);
+  padding: 25px;
+  border-radius: 50px;
+}
+
+th {
+  border: black 1px dotted;
+}
+
+.Grid {
+  grid-row-start: 1;
+  grid-row-end: 5;
+  grid-column-start: 2;
+}
+
+header {
+  background-color: rgb(187, 121, 121);
+  padding: 5px;
+  border-radius: 500px;
+  margin: 10px;
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.ScoreBoard {
+  height: 50px;
+  width: 200px;
+  grid-column-start: 1;
+  grid-row-start: 2;
+  padding: 0;
+  margin: 5px;
+}
+
+.ScoreBoard th {
+  border: 0;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 400px;
+  margin: 0 auto;
   text-align: center;
+  background-color: rgb(141, 73, 73);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table button {
+  height: 100px;
+  width: 100px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px solid black;
+  margin: 0 auto;
+  font-size: 50px;
 }
