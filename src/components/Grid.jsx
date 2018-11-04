@@ -63,12 +63,14 @@ class Grid extends React.Component {
   mouseOver = event => {
     if (event.target.localName === 'button' && event.target.innerText === '') {
       event.target.innerText = this.props.player;
+      event.target.className = 'hover';
     }
   };
 
   mouseOut = event => {
     if (event.target.localName === 'button') {
       event.target.innerText = this.state[event.target.id];
+      event.target.className = { hover: false };
     }
   };
 
@@ -87,39 +89,31 @@ class Grid extends React.Component {
   checkForWinner = () => {
     const sq = this.state;
     if (sq.a1 === sq.b1 && sq.b1 === sq.c1 && sq.a1 !== '') {
-      console.log('a');
-      this.handleWinner(this.state.a1);
+      return this.handleWinner(this.state.a1);
     }
     if (sq.a2 === sq.b2 && sq.b2 === sq.c2 && sq.a2 !== '') {
-      console.log('b');
-      this.handleWinner(this.state.a2);
+      return this.handleWinner(this.state.a2);
     }
     if (sq.a3 === sq.b3 && sq.b3 === sq.c3 && sq.a3 !== '') {
-      console.log('c');
-      this.handleWinner(this.state.a3);
+      return this.handleWinner(this.state.a3);
     }
     if (sq.a1 === sq.a2 && sq.a2 === sq.a3 && sq.a3 !== '') {
-      console.log('d');
-      this.handleWinner(this.state.a1);
+      return this.handleWinner(this.state.a1);
     }
     if (sq.b1 === sq.b2 && sq.b2 === sq.b3 && sq.b3 !== '') {
-      console.log('e');
-      this.handleWinner(this.state.b1);
+      return this.handleWinner(this.state.b1);
     }
     if (sq.c1 === sq.c2 && sq.c2 === sq.c3 && sq.c3 !== '') {
-      console.log('f');
-      this.handleWinner(this.state.c1);
+      return this.handleWinner(this.state.c1);
     }
     if (sq.a1 === sq.b2 && sq.b2 === sq.c3 && sq.a1 !== '') {
-      console.log('g');
-      this.handleWinner(this.state.a1);
+      return this.handleWinner(this.state.a1);
     }
     if (sq.a3 === sq.b2 && sq.b2 === sq.c1 && sq.c1 !== '') {
-      console.log('h');
-      this.handleWinner(this.state.a3);
+      return this.handleWinner(this.state.a3);
     }
     if (!Object.values(sq).some(el => el === '')) {
-      this.handleTie();
+      return this.handleTie();
     }
   };
 
