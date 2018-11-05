@@ -15,50 +15,70 @@ class Grid extends React.Component {
 
   render() {
     return (
-      <table
-        onClick={this.handleClick}
-        onMouseOver={this.mouseOver}
-        onMouseOut={this.mouseOut}
-        className="Grid"
-      >
-        <tbody>
-          <tr>
-            <th>
-              <button id="a1">{this.state.a1}</button>
-            </th>
-            <th>
-              <button id="b1">{this.state.b1}</button>
-            </th>
-            <th>
-              <button id="c1">{this.state.c1}</button>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <button id="a2">{this.state.a2}</button>
-            </th>
-            <th>
-              <button id="b2">{this.state.b2}</button>
-            </th>
-            <th>
-              <button id="c2">{this.state.c2}</button>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <button id="a3">{this.state.a3}</button>
-            </th>
-            <th>
-              <button id="b3">{this.state.b3}</button>
-            </th>
-            <th>
-              <button id="c3">{this.state.c3}</button>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <button id="resetBoard" className="resetBtn" onClick={this.clearBoard}>
+          Reset Board
+        </button>
+        <table
+          onClick={this.handleClick}
+          onMouseOver={this.mouseOver}
+          onMouseOut={this.mouseOut}
+          className="Grid"
+        >
+          <tbody>
+            <tr>
+              <th>
+                <button id="a1">{this.state.a1}</button>
+              </th>
+              <th>
+                <button id="b1">{this.state.b1}</button>
+              </th>
+              <th>
+                <button id="c1">{this.state.c1}</button>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <button id="a2">{this.state.a2}</button>
+              </th>
+              <th>
+                <button id="b2">{this.state.b2}</button>
+              </th>
+              <th>
+                <button id="c2">{this.state.c2}</button>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <button id="a3">{this.state.a3}</button>
+              </th>
+              <th>
+                <button id="b3">{this.state.b3}</button>
+              </th>
+              <th>
+                <button id="c3">{this.state.c3}</button>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     );
   }
+
+  componentDidMount() {
+    const boardState = localStorage.getItem('boardState');
+    if (boardState) {
+      this.setState(JSON.parse(boardState));
+    }
+  }
+
+  componentDidUpdate() {
+    this.saveState();
+  }
+
+  saveState = () => {
+    localStorage.setItem('boardState', JSON.stringify(this.state));
+  };
 
   mouseOver = event => {
     if (event.target.localName === 'button' && event.target.innerText === '') {

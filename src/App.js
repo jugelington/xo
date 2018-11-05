@@ -16,6 +16,9 @@ class App extends Component {
       <main>
         <Header />
         <ScoreBoard xScore={this.state.xScore} oScore={this.state.oScore} />
+        <button key="scoreReset" className="resetBtn" onClick={this.scoreReset}>
+          Reset Score
+        </button>
         <Grid
           player={this.state.player}
           togglePlayer={this.togglePlayer}
@@ -23,6 +26,17 @@ class App extends Component {
         />
       </main>
     );
+  }
+
+  componentDidMount() {
+    const savedScore = localStorage.getItem('scores');
+    if (savedScore) {
+      this.setState(JSON.parse(savedScore));
+    }
+  }
+
+  componentDidUpdate() {
+    this.saveState();
   }
 
   togglePlayer = () => {
@@ -37,6 +51,21 @@ class App extends Component {
       const newOscore = this.state.oScore + 1;
       this.setState({ oScore: newOscore });
     }
+  };
+
+  scoreReset = () => {
+    this.setState({
+      player: 'X',
+      xScore: 0,
+      oScore: 0
+    });
+  };
+
+  // boardReset = () => {
+  // };
+
+  saveState = () => {
+    localStorage.setItem('scores', JSON.stringify(this.state));
   };
 }
 

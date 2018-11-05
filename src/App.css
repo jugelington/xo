@@ -1,8 +1,5 @@
 main {
   margin: 10px;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 4fr;
 }
 
 table {
@@ -17,9 +14,9 @@ th {
   border: black 1px dotted;
 }
 
-.Grid {
+table {
   grid-row-start: 1;
-  grid-row-end: 5;
+  grid-row-end: 6;
   grid-column-start: 2;
 }
 
@@ -41,7 +38,7 @@ header {
   grid-column-start: 1;
   grid-row-start: 2;
   padding: 0;
-  margin: 5px;
+  margin: 5px auto;
 }
 
 .ScoreBoard th {
@@ -66,11 +63,19 @@ table button {
   height: 100px;
   width: 100px;
   background-color: rgba(255, 255, 255, 0);
-  border: 0px solid black;
+  border: 0px;
   margin: 0 auto;
   font-size: 50px;
 }
 
 .hover {
   color: rgba(0, 0, 0, 0.1);
+}
+
+.resetBtn {
+  background-color: rgb(187, 121, 121);
+  border-radius: 50px;
+  border: 0px;
+  margin: 4px;
+  font-size: 20px;
 }
